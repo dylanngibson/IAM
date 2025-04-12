@@ -22,5 +22,6 @@ from django.urls import path, include  # <-- Add include here
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('roles/', include('roles.urls')),
+    path('auth/', include('auth_app.urls')),
 
 ]
