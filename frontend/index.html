@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin IAM Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header across the top -->
+  <header>
+    <h1>Admin IAM Dashboard</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+    </div>
+  </header>
+
+  <!-- Sidebar and main content side-by-side -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav class="menu">
+        <a href="user-groups.html">Users/Groups</a>
+        <a href="rules-policies.html">Rule/Policies</a>
+        <a href="policies.html">Policies</a>
+        <a href="alerts.html">Alerts</a>
+        <a href="logout.html">Log Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="greeting">Hello Admin!</div>
+
+      <div class="status-panels">
+        <div class="panel">
+          Users Online
+          <span class="online">?</span>
+        </div>
+        <div class="panel">
+          User Alerts
+          <span class="alerts">?</span>
+        </div>
+      </div>
+
+      <div class="server-resources">
+        <h3>Server Resources</h3>
+        <!-- Future stats go here -->
+      </div>
+    </main>
+  </div>
+</body>
+</html>
