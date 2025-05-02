@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin IAM Users/Groups</title>
+  <link rel="stylesheet" href="user-groups.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="menu">
+  <h1>Admin IAM Users/Groups</h1>
+  <nav class="menu">
+	<a href="index.html">Home</a>
+    <a href="user-groups.html">Users/Groups</a>
+	<a href="casual-dashboard.html">Create/Delete</a>
+    <a href="policies.html">Policies</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="login.html">Log Out</a>
+  </nav>
+</aside>
+
+    <!-- Main content -->
+    <main class="main-section">
+      <!-- Top bar with search on the right -->
+      <header class="top-bar">
+        <input type="text" placeholder="Search..." />
+      </header>
+
+      <!-- Folder tree -->
+      <div class="group-panel">
+        <div class="folder toggle" data-target="ac-global">📁 AC Global</div>
+        <div id="ac-global" class="folder-content hidden">
+          <div class="folder toggle" data-target="ac-admin">➕ AC Admin</div>
+          <div class="folder toggle" data-target="ac-client">➕ AC Client</div>
+          <div class="folder toggle" data-target="ac-staff">📁 AC Staff</div>
+
+          <div id="ac-staff" class="folder-content hidden">
+            <div class="folder highlight toggle" data-target="staff-casual">➕ Staff Casual</div>
+            <div id="staff-casual" class="folder-content hidden indent">
+              <p class="user-name">Abigail Arronson</p>
+              <p class="user-name">Babigail Arronson</p>
+              <p class="user-name">Cabigail Arronson</p>
+            </div>
+            <div class="folder toggle" data-target="staff-manager">➕ Staff Manager</div>
+            <div class="folder toggle" data-target="staff-external">➕ Staff External</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User cards -->
+      <div class="user-panel">
+        <!-- repeat for each user -->
+        <div class="user-card">
+          <div class="user-icon">Do</div>
+          <div class="user-info">
+            <strong>Abigail Arronson</strong>
+            <p>Last Login: 6th March 2025</p>
+            <p>Account Locked: No</p>
+          </div>
+          <div class="user-actions">
+            <a href="#">Account Properties</a>
+          </div>
+        </div>
+        <!-- ...other user-cards... -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('.toggle').forEach(folder => {
+      folder.addEventListener('click', () => {
+        const target = document.getElementById(folder.dataset.target);
+        if (target) target.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

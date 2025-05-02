@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin IAM Policies</title>
+  <link rel="stylesheet" href="policies.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="menu">
+  <h1>Admin IAM Users/Groups</h1>
+  <nav class="menu">
+	<a href="index.html">Home</a>
+    <a href="user-groups.html">Users/Groups</a>
+	<a href="casual-dashboard.html">Create/Delete</a>
+    <a href="policies.html">Policies</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="login.html">Log Out</a>
+  </nav>
+</aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <section class="policy-section">
+        <div class="policy-header">
+          <h2>(Group)<br/>Policies</h2>
+          <div class="policy-actions">
+            <button>Create Policy</button>
+            <button>Delete Policy</button>
+          </div>
+        </div>
+
+        <div class="policy-list">
+          <!-- Each policy row -->
+          <label><input type="checkbox" /> AdministrativeStaffFullAccess</label>
+          <label><input type="checkbox" /> FacilityManagementFullAccess</label>
+          <label><input type="checkbox" /> CybersecurityDeptFullAccess</label>
+          <label><input type="checkbox" /> HealthcareStaffRestrictedAccess</label>
+          <label><input type="checkbox" /> SupervisorRestrictedAccess</label>
+          <label><input type="checkbox" /> ResidentRestrictedAccess</label>
+          <label><input type="checkbox" /> FamilyGuardianRestrictedAccess</label>
+          <label><input type="checkbox" /> AuditorRestrictedAccess</label>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

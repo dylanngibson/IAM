@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #b3b3b3;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu a {
+  display: block;
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+  border: none;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none; 
+  color: black;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: #d4d4d4; 
+}
+
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #b3b3b3;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  background-color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar */
+.top-bar {
+  background-color: #bfbfbf;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-bar input {
+  width: 250px;
+  padding: 8px;
+  border: none;
+  background-color: #e6e6e6;
+}
+
+/* Form wrapper */
+.form-wrapper {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* align left */
+}
+
+/* Form header styling */
+.form-header {
+  background-color: #666;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-header h2 {
+  background-color:;
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 22px;
+}
+
+/* Staff form fields */
+.staff-form {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: auto 200px auto 200px;
+  align-items: center;
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.form-row input {
+  padding: 8px;
+  border: 1px solid #aaa;
+  background-color: white;
+  width: 100%;
+}
+
+.form-optional h3 {
+  font-size: 18px;
+  margin: 20px 0 10px 0;
+}

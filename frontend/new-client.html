@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin IAM Dashboard - New Client</title>
+  <link rel="stylesheet" href="new-client.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="menu">
+  <h1>Admin IAM Users/Groups</h1>
+  <nav class="menu">
+	<a href="index.html">Home</a>
+    <a href="user-groups.html">Users/Groups</a>
+	<a href="casual-dashboard.html">Create/Delete</a>
+    <a href="policies.html">Policies</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="login.html">Log Out</a>
+  </nav>
+</aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <input type="text" placeholder="Search..." />
+      </header>
+
+      <section class="form-section">
+        <div class="form-header">
+          <h3>New Client</h3>
+        </div>
+
+        <form class="client-form">
+          <div class="form-row">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" />
+            <label for="email">Email</label>
+            <input type="email" id="email" />
+          </div>
+
+          <div class="form-row">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" />
+            <label for="group">Group</label>
+            <input type="text" id="group" />
+          </div>
+
+          <div class="form-row">
+            <label for="startDate">Account Start Date</label>
+            <input type="date" id="startDate" />
+          </div>
+
+          <div class="form-row">
+            <label for="expiryDate">Account Expiration Date</label>
+            <input type="date" id="expiryDate" />
+          </div>
+
+          <h4>(Optional)</h4>
+
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" />
+            <label for="room">Room Location</label>
+            <input type="text" id="room" />
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

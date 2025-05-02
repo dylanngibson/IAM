@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Staff</title>
+  <link rel="stylesheet" href="new-staff.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="menu">
+  <h1>Admin IAM Users/Groups</h1>
+  <nav class="menu">
+	<a href="index.html">Home</a>
+    <a href="user-groups.html">Users/Groups</a>
+	<a href="casual-dashboard.html">Create/Delete</a>
+    <a href="policies.html">Policies</a>
+    <a href="alerts.html">Alerts</a>
+    <a href="login.html">Log Out</a>
+  </nav>
+</aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="top-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <section class="form-wrapper">
+        <div class="form-header">
+          <h2>New Staff</h2>
+        </div>
+
+        <form class="staff-form">
+          <div class="form-row">
+            <label>First Name</label>
+            <input type="text">
+            <label>Email (UPN)</label>
+            <input type="email">
+          </div>
+
+          <div class="form-row">
+            <label>Last Name</label>
+            <input type="text">
+            <label>Group</label>
+            <input type="text">
+          </div>
+
+          <div class="form-row">
+            <label>Account Start Date</label>
+            <input type="date">
+            <label>ID</label>
+            <input type="text">
+          </div>
+
+          <div class="form-row">
+            <label>Account Expiration Date</label>
+            <input type="date">
+          </div>
+
+          <div class="form-optional">
+            <h3>(Optional)</h3>
+          </div>
+
+          <div class="form-row">
+            <label>Phone Number</label>
+            <input type="tel">
+            <label>Desk Location</label>
+            <input type="text">
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
