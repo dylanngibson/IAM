@@ -1,10 +1,21 @@
+
+
 from rest_framework.permissions import BasePermission
+from roles.policy import has_permission
+from attributes.utils import match_attributes
 
-class IsAdmin(BasePermission):
-    def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role and request.user.role.name == 'Admin'
 
-class IsFromSameDepartment(BasePermission):
+class IsAdminRole(BasePermission):
+
+    required_permission = "admin.panel"
+
     def has_permission(self, request, view):
-        # Example ABAC logic
-        return request.user.is_authenticated and request.user.department == 'IT'
+        return has_permission(request.user, self.required_permission)
+
+
+class IsSameDepartment(BasePermission):
+ 
+
+    def has_object_permission(self, request, view, obj):
+        # 'obj' is the target User instance
+        return match_attributes(request.user, obj)

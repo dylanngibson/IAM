@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #b3b3b3;
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.menu a {
+  display: block;
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+  border: none;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none; 
+  color: black;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: #d4d4d4; 
+}
+
+
+
+.sidebar {
+  width: 220px;
+  background-color: #b3b3b3;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: #e0e0e0;
+}
+
+.top-bar {
+  background-color: #bfbfbf;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top-bar input {
+  width: 250px;
+  padding: 8px;
+  border: none;
+  background-color: #e6e6e6;
+}
+
+.alert-section {
+  padding: 30px;
+  background-color: #999;
+  height: calc(100% - 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-box {
+  background-color: #ddd;
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stat-value {
+  color: red;
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+.chart-section {
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.chart-section h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.bar-chart-placeholder {
+  background-color: white;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: gray;
+}

@@ -1,7 +1,12 @@
-from django.urls import path
-from .views import RoleListCreateView, RoleDetailView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import RoleViewSet, PermissionListCreateView, PermissionDetailView
+
+router = DefaultRouter()
+router.register(r'roles', RoleViewSet, basename='role')
 
 urlpatterns = [
-    path('', RoleListCreateView.as_view(), name='role-list-create'),
-    path('<int:pk>/', RoleDetailView.as_view(), name='role-detail'),
+    path('permissions/', PermissionListCreateView.as_view(), name='perm-list-create'),
+    path('permissions/<int:pk>/', PermissionDetailView.as_view(), name='perm-detail'),
+    path('', include(router.urls)),  # Must be last to avoid overlap issues
 ]

@@ -1,0 +1,225 @@
+/* === GLOBAL RESET === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* === MENU SIDEBAR === */
+.menu {
+  width: 250px;
+  background-color: #b3b3b3;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.menu h1 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.menu nav a {
+  display: block;
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+  border: none;
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none; 
+  color: black;
+  cursor: pointer;
+}
+
+.menu nav a:hover {
+  background-color: #d4d4d4; 
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #f0f0f0;
+  overflow-y: auto;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.top-bar input {
+  padding: 5px 10px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background-color: #e6e6e6;
+}
+
+/* === FORM SECTION === */
+.form-section {
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.form-header {
+  background: #c0c0c0;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-header h3, .form-header h4 {
+  margin: 0;
+}
+
+/* === SEARCH SECTION === */
+.search-section {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-section p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+.search-row input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.search-btn {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* === CLIENT INFO === */
+.client-info {
+  padding: 0 15px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-header {
+  padding: 15px 0;
+  margin-bottom: 10px;
+}
+
+.info-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+}
+
+.info-label {
+  font-weight: bold;
+  width: 150px;
+}
+
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+/* === EXIT FORM === */
+.exit-form {
+  padding: 15px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-row input, .form-row select, .form-row textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* === DATA OPTIONS === */
+.data-options {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+.data-header {
+  margin-bottom: 10px;
+}
+
+.option-row {
+  margin-bottom: 10px;
+}
+
+.option-row label {
+  display: flex;
+  align-items: center;
+}
+
+.option-row input {
+  margin-right: 10px;
+}
+
+/* === ACTION BUTTONS === */
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.process-btn, .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.process-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+}

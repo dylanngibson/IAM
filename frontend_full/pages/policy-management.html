@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin IAM Policy Management</title>
+    <link rel="stylesheet" href="../css/policy-management.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="menu">
+        <h1>Admin IAM Policy Management</h1>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="user-groups.html">Users/Groups</a>
+          <a href="casual-dashboard.html">Create/Delete</a>
+          <a href="policies.html">Policies</a>
+          <a href="alerts.html">Alerts</a>
+          <a href="login.html">Log Out</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="top-bar">
+          <input type="text" placeholder="Search..." />
+        </div>
+
+        <!-- Create Policy Section -->
+        <section class="policy-section">
+          <div class="policy-header">
+            <h2>Create New Policy</h2>
+          </div>
+
+          <form class="policy-form">
+            <div class="form-row">
+              <label for="policyName">Policy Name</label>
+              <input
+                type="text"
+                id="policyName"
+                placeholder="Enter a unique policy name"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="policyDescription">Description</label>
+              <textarea
+                id="policyDescription"
+                placeholder="Describe the purpose of this policy"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-row">
+              <label>Apply To:</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" /> Administrative Staff</label>
+                <label><input type="checkbox" /> Facility Management</label>
+                <label><input type="checkbox" /> IT & Cybersecurity</label>
+                <label><input type="checkbox" /> Healthcare Staff</label>
+                <label><input type="checkbox" /> Residents</label>
+                <label><input type="checkbox" /> Family Members</label>
+                <label><input type="checkbox" /> Auditors</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label>Permissions:</label>
+              <div class="permission-grid">
+                <!-- Resources column -->
+                <div class="resource-column">
+                  <div class="grid-header">Resource</div>
+                  <div class="resource-item">Personal Information</div>
+                  <div class="resource-item">Medical Records</div>
+                  <div class="resource-item">Financial Data</div>
+                  <div class="resource-item">Facility Access</div>
+                  <div class="resource-item">System Configuration</div>
+                  <div class="resource-item">Audit Logs</div>
+                </div>
+
+                <!-- Access level columns -->
+                <div class="access-column">
+                  <div class="grid-header">No Access</div>
+                  <div class="access-cell">
+                    <input type="radio" name="personal" value="none" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="medical" value="none" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="financial" value="none" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="facility" value="none" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="system" value="none" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="audit" value="none" />
+                  </div>
+                </div>
+
+                <div class="access-column">
+                  <div class="grid-header">Read Only</div>
+                  <div class="access-cell">
+                    <input type="radio" name="personal" value="read" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="medical" value="read" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="financial" value="read" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="facility" value="read" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="system" value="read" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="audit" value="read" />
+                  </div>
+                </div>
+
+                <div class="access-column">
+                  <div class="grid-header">Read & Write</div>
+                  <div class="access-cell">
+                    <input type="radio" name="personal" value="write" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="medical" value="write" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="financial" value="write" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="facility" value="write" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="system" value="write" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="audit" value="write" />
+                  </div>
+                </div>
+
+                <div class="access-column">
+                  <div class="grid-header">Full Access</div>
+                  <div class="access-cell">
+                    <input type="radio" name="personal" value="full" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="medical" value="full" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="financial" value="full" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="facility" value="full" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="system" value="full" />
+                  </div>
+                  <div class="access-cell">
+                    <input type="radio" name="audit" value="full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <button type="submit" class="submit-btn">Create Policy</button>
+              <button type="reset" class="reset-btn">Reset Form</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Delete Policy Section -->
+        <section class="policy-section">
+          <div class="policy-header">
+            <h2>Delete Existing Policy</h2>
+          </div>
+
+          <div class="policy-list">
+            <div class="policy-item">
+              <input type="checkbox" id="policy1" />
+              <label for="policy1">AdministrativeStaffFullAccess</label>
+              <div class="policy-desc">
+                Provides full system access to administrative staff members
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <input type="checkbox" id="policy2" />
+              <label for="policy2">FacilityManagementFullAccess</label>
+              <div class="policy-desc">
+                Provides complete access to facility management staff
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <input type="checkbox" id="policy3" />
+              <label for="policy3">CybersecurityDeptFullAccess</label>
+              <div class="policy-desc">
+                Provides full access to IT and cybersecurity team members
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <input type="checkbox" id="policy4" />
+              <label for="policy4">HealthcareStaffRestrictedAccess</label>
+              <div class="policy-desc">
+                Provides limited access to medical and care staff
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <input type="checkbox" id="policy5" />
+              <label for="policy5">ResidentRestrictedAccess</label>
+              <div class="policy-desc">
+                Provides limited access to resident information
+              </div>
+            </div>
+
+            <div class="policy-item">
+              <input type="checkbox" id="policy6" />
+              <label for="policy6">FamilyGuardianRestrictedAccess</label>
+              <div class="policy-desc">
+                Provides limited access to family members and guardians
+              </div>
+            </div>
+
+            <button class="delete-btn">Delete Selected Policies</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../js/policy-management.js"></script>
+    <script type="module" src="../js/api.js"></script>
+  </body>
+</html>

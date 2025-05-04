@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin IAM Dashboard - Exiting Client</title>
+  <link rel="stylesheet" href="../css/exiting-client.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="menu">
+      <h1>Admin IAM Users/Groups</h1>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="user-groups.html">Users/Groups</a>
+        <a href="casual-dashboard.html">Create/Delete</a>
+        <a href="policies.html">Policies</a>
+        <a href="alerts.html">Alerts</a>
+        <a href="login.html">Log Out</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <input type="text" placeholder="Search..." />
+      </header>
+
+      <section class="form-section">
+        <div class="form-header">
+          <h3>Exiting Client</h3>
+        </div>
+
+        <div class="search-section">
+          <p>Search for client to process exit:</p>
+          <div class="search-row">
+            <input type="text" placeholder="Search client by name or ID..." id="clientSearch" />
+            <button class="search-btn">Search</button>
+          </div>
+        </div>
+
+        <div class="client-info">
+          <div class="info-header">
+            <h4>Client Information</h4>
+          </div>
+          
+          <div class="info-grid">
+            <div class="info-row">
+              <div class="info-label">Client ID:</div>
+              <div class="info-value">CL-10053</div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-label">Full Name:</div>
+              <div class="info-value">Margaret Thompson</div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-label">Email:</div>
+              <div class="info-value">margaret.t@example.com</div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-label">Account Created:</div>
+              <div class="info-value">15 March 2024</div>
+            </div>
+            
+            <div class="info-row">
+              <div class="info-label">Current Status:</div>
+              <div class="info-value status-active">Active</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="exit-form">
+          <div class="form-header">
+            <h4>Exit Processing</h4>
+          </div>
+          
+          <div class="form-row">
+            <label for="exitDate">Exit Date</label>
+            <input type="date" id="exitDate" required />
+          </div>
+          
+          <div class="form-row">
+            <label for="exitReason">Reason for Exit</label>
+            <select id="exitReason" required>
+              <option value="">Select reason...</option>
+              <option value="deceased">Deceased</option>
+              <option value="transferred">Transferred to Another Facility</option>
+              <option value="discharged">Discharged - Returned Home</option>
+              <option value="family">Family Request</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-row">
+            <label for="exitNotes">Additional Notes</label>
+            <textarea id="exitNotes" rows="3"></textarea>
+          </div>
+          
+          <div class="data-options">
+            <div class="data-header">
+              <h4>Data Handling Options</h4>
+            </div>
+            
+            <div class="option-row">
+              <label>
+                <input type="radio" name="dataOption" value="retain" checked />
+                Retain data for regulatory period (7 years)
+              </label>
+            </div>
+            
+            <div class="option-row">
+              <label>
+                <input type="radio" name="dataOption" value="archive" />
+                Archive data (limited access)
+              </label>
+            </div>
+            
+            <div class="option-row">
+              <label>
+                <input type="radio" name="dataOption" value="deidentify" />
+                De-identify personal information
+              </label>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button type="submit" class="process-btn">Process Exit</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Basic client-side validation
+    document.querySelector('.process-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const exitDate = document.getElementById('exitDate').value;
+      const exitReason = document.getElementById('exitReason').value;
+      
+      if (!exitDate || !exitReason) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Confirmation dialog
+      if (confirm('Are you sure you want to process this client exit? This action will deactivate the client account.')) {
+        alert('Exit processed successfully. Client account has been deactivated.');
+      }
+    });
+    
+    document.querySelector('.cancel-btn').addEventListener('click', function() {
+      if (confirm('Cancel this exit process? Any information entered will be lost.')) {
+        window.location.href = 'casual-dashboard.html';
+      }
+    });
+  </script>
+  <script type="module" src="../js/api.js"></script>
+</body>
+</html>
