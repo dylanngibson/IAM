@@ -1,8 +1,3 @@
-"""
-Thin wrapper so any part of the backend can raise an Alert
-and automatically log to CloudWatch.
-"""
-
 import logging
 from .models import Alert
 
@@ -15,11 +10,14 @@ def create_alert(level: str, message: str, *, user=None, details=None) -> Alert:
         user=user,
         details=details,
     )
+
+    # ✅ DO NOT use reserved keys like "message", "levelname", "asctime"
     logger.warning("security_alert", extra={
         "event": "security_alert",
-        "level": alert.level,
-        "message": alert.message,
+        "alert_level": alert.level,
+        "alert_message": alert.message,  # ✅ renamed key
         "alert_id": alert.id,
         "user": getattr(user, "username", None),
     })
+
     return alert

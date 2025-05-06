@@ -12,16 +12,27 @@
         <div class="login-header">
           <h2>Admin IAM Login</h2>
         </div>
-        <form>
-          <input type="text" placeholder="Username" class="input-field" />
-          <input type="password" placeholder="Password" class="input-field" />
+        <form id="loginForm">
+          <input
+            type="text"
+            id="username"
+            placeholder="Username"
+            class="input-field"
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            class="input-field"
+          />
           <a href="#" class="forgot-link">Forgot your username or password ?</a>
           <button type="submit" class="login-btn">Sign In</button>
         </form>
       </div>
     </div>
-    <script src="login.js"></script>
+
+    <!-- Load JavaScript at the bottom for DOM safety -->
     <script type="module" src="../js/api.js"></script>
-    <script src="../js/login.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </body>
 </html>
