@@ -1,6 +1,10 @@
 const API_ROOT = "http://127.0.0.1:8000";
 console.log("🟢 login.js loaded");
 
+// Simple hardcoded credentials (you can change this or connect to a backend later)
+const validUsername = "admin";
+const validPassword = "password123";
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
 
@@ -40,11 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!res.ok) {
       console.error("Login failed:", data);
 
-      // Show inline error instead of alert popup
       errorMessage.textContent =
         data.non_field_errors?.join(", ") || data.detail || "Login failed";
 
-      // Clear form fields
       document.getElementById("username").value = "";
       document.getElementById("password").value = "";
 
