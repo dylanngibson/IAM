@@ -1,0 +1,60 @@
+<!-- user-groups.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin IAM Users/Groups</title>
+    <link rel="stylesheet" href="/static/css/user-groups.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="menu">
+        <h1>Admin IAM Users/Groups</h1>
+        <nav class="menu">
+          <a href="/static/pages/index.html">Home</a>
+          <a href="/static/pages/user-groups.html">Users/Groups</a>
+          <a href="/static/pages/casual-dashboard.html">Create/Delete</a>
+          <a href="/static/pages/policies.html">Policies</a>
+          <a href="/static/pages/alerts.html">Alerts</a>
+          <a href="/static/pages/login.html">Log Out</a>
+        </nav>
+      </aside>
+
+      <main class="main-section">
+        <header class="top-bar">
+          <input type="text" placeholder="Search..." />
+        </header>
+
+        <div class="group-panel">
+          <div class="folder toggle" data-target="ac-global">📁 AC Global</div>
+          <div id="ac-global" class="folder-content hidden">
+            <div class="folder toggle" data-target="ac-admin">➕ AC Admin</div>
+            <div class="folder toggle" data-target="ac-client">
+              ➕ AC Client
+            </div>
+            <div class="folder toggle" data-target="ac-staff">📁 AC Staff</div>
+            <div id="ac-staff" class="folder-content hidden">
+              <div class="folder highlight toggle" data-target="staff-casual">
+                ➕ Staff Casual
+              </div>
+              <div id="staff-casual" class="folder-content hidden indent"></div>
+              <div class="folder toggle" data-target="staff-manager">
+                ➕ Staff Manager
+              </div>
+              <div class="folder toggle" data-target="staff-external">
+                ➕ Staff External
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="user-panel"></div>
+      </main>
+    </div>
+
+    <script type="module" src="/static/js/api.js"></script>
+    <script type="module" src="/static/js/user-groups.js"></script>
+    <script src="/static/js/nav.js" defer></script>
+  </body>
+</html>

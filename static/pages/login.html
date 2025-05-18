@@ -1,10 +1,11 @@
+<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="../css/login.css" />
+    <title>Admin IAM Login</title>
+    <link rel="stylesheet" href="/static/css/login.css" />
   </head>
   <body>
     <div class="login-container">
@@ -25,14 +26,14 @@
             placeholder="Password"
             class="input-field"
           />
-          <a href="#" class="forgot-link">Forgot your username or password ?</a>
+          <a href="#" class="forgot-link">Forgot your username or password?</a>
+          <div id="login-error" style="color: red; margin-top: 10px"></div>
           <button type="submit" class="login-btn">Sign In</button>
         </form>
       </div>
     </div>
 
-    <!-- Load JavaScript at the bottom for DOM safety -->
-    <script type="module" src="../js/api.js"></script>
-    <script type="module" src="../js/login.js"></script>
+    <script type="module" src="/static/js/api.js"></script>
+    <script type="module" src="/static/js/auth.js"></script>
   </body>
 </html>

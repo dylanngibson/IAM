@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin IAM Dashboard - Exiting Staff</title>
+    <link rel="stylesheet" href="../css/exiting-staff.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="menu">
+        <h1>Admin IAM Users/Groups</h1>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="user-groups.html">Users/Groups</a>
+          <a href="casual-dashboard.html">Create/Delete</a>
+          <a href="policies.html">Policies</a>
+          <a href="alerts.html">Alerts</a>
+          <a href="login.html">Log Out</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <input type="text" placeholder="Search..." />
+        </header>
+
+        <section class="form-section">
+          <div class="form-header">
+            <h3>Exiting Staff Member</h3>
+          </div>
+
+          <form class="staff-exit-form">
+            <div class="form-row">
+              <p>Process a staff exit by ID.</p>
+            </div>
+            <div class="action-buttons">
+              <button type="submit" class="process-btn">
+                Deactivate Staff
+              </button>
+              <button
+                type="button"
+                class="cancel-btn"
+                onclick="window.location.href='casual-dashboard.html'"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/static/js/"></script>
+    <script type="module" src="/static/js/exiting-staff.js"></script>
+  </body>
+</html>

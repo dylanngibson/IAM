@@ -1,5 +1,7 @@
+// static/js/policy-management.js
 import { api } from "./api.js";
 
+console.log("🛠️ Loaded UPDATED policy-management.js"); // <— you MUST see this in your console
 console.log("✅ JS loaded for Policy Management page");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.querySelector(".policy-form");
   const deleteBtn = document.querySelector(".delete-btn");
+  const listContainer = document.querySelector(".policy-list");
 
   // ——— CREATE POLICY ———
   form.addEventListener("submit", async (e) => {
@@ -16,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const description = document
       .getElementById("policyDescription")
       .value.trim();
-
     if (!name) {
       alert("Policy name is required.");
       return;
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     ).map((cb) => cb.parentElement.textContent.trim());
 
-    // 2) Map your form’s radio-group names → resource labels
+    // 2) Map radio-group names → resource labels
     const resourceMap = {
       personal: "Personal Information",
       medical: "Medical Records",
@@ -39,39 +41,32 @@ document.addEventListener("DOMContentLoaded", () => {
       audit: "Audit Logs",
     };
 
-    // 3) Build the rules array from the selected radio buttons
+    // 3) Build rules array
     const rules = Object.keys(resourceMap).map((key) => {
       const sel = document.querySelector(`input[name="${key}"]:checked`);
       return {
         resource: resourceMap[key],
-        access_level: (sel && convertToAccessLevel(sel.value)) || "no_access",
+        access_level:
+          (sel &&
+            { read: "read_only", write: "read_write", full: "full_access" }[
+              sel.value
+            ]) ||
+          "no_access",
       };
     });
 
-    function convertToAccessLevel(val) {
-      if (val === "read") return "read_only";
-      if (val === "write") return "read_write";
-      if (val === "full") return "full_access";
-      return "no_access";
-    }
-
-    const payload = {
-      name,
-      description,
-      applies_to: appliesTo,
-      rules,
-    };
+    const payload = { name, description, applies_to: appliesTo, rules };
+    console.log("📤 PAYLOAD:", payload);
 
     try {
-      const response = await api("/api/policies/", {
+      // ▶️ POST to /api/roles/policies/
+      const response = await api("roles/policies", {
         method: "POST",
         body: JSON.stringify(payload),
       });
       console.log("✅ Policy created:", response);
       alert("Policy created successfully!");
-
-      // Optional: reload if you want to show it in the list immediately
-      // location.reload();
+      loadPolicies();
     } catch (err) {
       console.error("❌ Failed to create policy:", err);
       alert("Failed to create policy.");
@@ -83,28 +78,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const checked = Array.from(
       document.querySelectorAll(".policy-list input[type='checkbox']:checked")
     );
-
-    if (checked.length === 0) {
+    if (!checked.length) {
       alert("Please select at least one policy to delete.");
       return;
     }
 
     for (let cb of checked) {
-      const policyId = cb.dataset.policyId;
-      if (!policyId) {
-        console.warn("Missing data-policy-id on checkbox:", cb);
-        continue;
-      }
-
+      const id = cb.dataset.policyId;
       try {
-        await api(`/api/policies/${policyId}/`, { method: "DELETE" });
-        console.log(`✅ Deleted policy ID ${policyId}`);
+        // ▶️ DELETE at /api/roles/policies/{id}/
+        await api(`roles/policies/${id}`, { method: "DELETE" });
+        console.log(`✅ Deleted policy ID ${id}`);
       } catch (err) {
-        console.error(`❌ Failed to delete policy ${policyId}:`, err);
+        console.error(`❌ Failed to delete policy ${id}:`, err);
       }
     }
 
     alert("Selected policies deleted.");
-    location.reload();
+    loadPolicies();
   });
+
+  // ——— FETCH & RENDER EXISTING POLICIES ———
+  async function loadPolicies() {
+    listContainer.innerHTML = "<p>Loading policies…</p>";
+    try {
+      // ▶️ GET from /api/roles/policies/
+      const policies = await api("roles/policies");
+      listContainer.innerHTML = "";
+      policies.forEach((p) => {
+        const item = document.createElement("div");
+        item.className = "policy-item";
+        item.innerHTML = `
+          <input type="checkbox" data-policy-id="${p.id}" id="policy-${p.id}" />
+          <label for="policy-${p.id}">${p.name}</label>
+          <div class="policy-desc">${p.description || ""}</div>
+        `;
+        listContainer.appendChild(item);
+      });
+    } catch (err) {
+      console.error("❌ Could not load policies:", err);
+      listContainer.textContent = "Failed to load policies.";
+    }
+  }
+
+  // Initial load
+  loadPolicies();
 });

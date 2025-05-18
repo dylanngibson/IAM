@@ -2,17 +2,21 @@ from rest_framework import viewsets, permissions, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Role, Permission, Policy
+from .models import Role, Permission, Policy, UserRole
 from .serializers import (
-    RoleSerializer, PermissionSerializer,
+    RoleSerializer,
+    PermissionSerializer,
     PolicySerializer,
+    UserRoleSerializer,
 )
 
-# ——— RBAC Endpoints ———
+# ——— Custom staff-only permission ———
 
 class IsStaff(permissions.BasePermission):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_staff)
+
+# ——— RBAC Endpoints ———
 
 class RoleViewSet(viewsets.ModelViewSet):
     queryset = Role.objects.all()
@@ -22,18 +26,18 @@ class RoleViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def set_permissions(self, request, pk=None):
         role = self.get_object()
-        perm_names = request.data.get('permissions', [])
+        perm_names = request.data.get("permissions", [])
         perms = Permission.objects.filter(name__in=perm_names)
         role.permissions.set(perms)
-        return Response({'status': 'permissions set'})
+        return Response({"status": "permissions set"})
 
-    @action(detail=True, methods=['post'])
+    @action(detail=True, methods=["post"])
     def remove_permissions(self, request, pk=None):
         role = self.get_object()
-        perm_names = request.data.get('permissions', [])
+        perm_names = request.data.get("permissions", [])
         perms = Permission.objects.filter(name__in=perm_names)
         role.permissions.remove(*perms)
-        return Response({'status': 'permissions removed'})
+        return Response({"status": "permissions removed"})
 
 class PermissionListCreateView(generics.ListCreateAPIView):
     queryset = Permission.objects.all()
@@ -45,12 +49,35 @@ class PermissionDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PermissionSerializer
     permission_classes = [IsStaff]
 
+# ——— UserRole Endpoints ———
+
+class UserRoleListCreateView(generics.ListCreateAPIView):
+    queryset = UserRole.objects.all()
+    serializer_class = UserRoleSerializer
+    permission_classes = [IsStaff]
+
+class UserRoleDeleteView(generics.DestroyAPIView):
+    queryset = UserRole.objects.all()
+    serializer_class = UserRoleSerializer
+    permission_classes = [IsStaff]
+    lookup_field = "pk"
+
 # ——— Policy Management Endpoints ———
 
-class PolicyCreateView(generics.CreateAPIView):
+class PolicyListCreateView(generics.ListCreateAPIView):
     """
-    POST /api/policies/  → create a new Policy + its PolicyRules.
+    GET /roles/policies/ → list all policies
+    POST /roles/policies/ → create a new policy + its rules
     """
     queryset = Policy.objects.all()
     serializer_class = PolicySerializer
-    permission_classes = [permissions.IsAuthenticated]  # or use IsStaff/IsAdminRole
+    permission_classes = [IsStaff]
+
+class PolicyDetailView(generics.RetrieveDestroyAPIView):
+    """
+    GET /roles/policies/<id>/ → retrieve a policy
+    DELETE /roles/policies/<id>/ → delete a policy
+    """
+    queryset = Policy.objects.all()
+    serializer_class = PolicySerializer
+    permission_classes = [IsStaff]

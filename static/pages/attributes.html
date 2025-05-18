@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin IAM Attribute Management</title>
+    <link rel="stylesheet" href="/static/css/attributes.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="menu">
+        <h1>Admin IAM Attributes</h1>
+        <nav class="menu">
+          <a href="/static/pages/index.html">Home</a>
+          <a href="/static/pages/user-groups.html">Users/Groups</a>
+          <a href="/static/pages/casual-dashboard.html">Create/Delete</a>
+          <a href="/static/pages/policies.html">Policies</a>
+          <a href="/static/pages/alerts.html">Alerts</a>
+          <button id="logoutBtn">Log Out</button>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <input type="text" placeholder="Search..." />
+        </header>
+
+        <section class="form-section">
+          <div class="form-header">
+            <h2>Attributes</h2>
+          </div>
+
+          <form class="attribute-form">
+            <input type="text" id="attrKey" placeholder="Key" required />
+            <input type="text" id="attrValue" placeholder="Value" required />
+            <button type="submit">Add</button>
+          </form>
+
+          <ul class="attribute-list">
+            <!-- Attributes will be injected here -->
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/static/js/api.js"></script>
+    <script type="module" src="/static/js/auth.js"></script>
+    <script type="module" src="/static/js/attributes.js"></script>
+  </body>
+</html>

@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('roles/', include('roles.urls')),
-    path('auth/', include('auth_app.urls')),
-    path("api/", include("roles.urls")),
-    path("api/", include("attributes.urls")),
-    path("api/alerts/", include("alerts.urls")),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # ✅ this matches your frontend
+
+    # — API Endpoints —
+    path('api/auth/', include('auth_app.urls')),           # /api/auth/login/, /api/auth/logout/, etc.
+    path('api/roles/', include('roles.urls')),              # /api/roles/, /api/roles/<pk>/, /api/roles/<pk>/set_permissions/, etc.
+    path('api/attributes/', include('attributes.urls')),    # /api/attributes/, /api/users/<id>/attributes/, etc.
+    path('api/alerts/', include('alerts.urls')),            # /api/alerts/recent/, /api/alerts/unseen-count/, etc.
+    path('api/users/', include('users.urls')),              # /api/users/, /api/users/me/, /api/users/<pk>/, etc.
 ]
